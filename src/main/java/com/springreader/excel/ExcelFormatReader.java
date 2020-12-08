@@ -34,6 +34,7 @@ public class ExcelFormatReader {
         int i = 0;
 
         for (Row row : sheet){
+            // we start by saying first row column id because It doesn't consider the blank spaces of the sheet
             System.out.println(row.getCell(1));
             System.out.println(row.getCell(2));
             System.out.println(row.getCell(3));
