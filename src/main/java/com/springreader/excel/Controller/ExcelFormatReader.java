@@ -66,6 +66,7 @@ public class ExcelFormatReader {
 
         for (Row row: sheet){
             if(i == 0){
+                // to skip the header of the table in excel
                 i++;
             }
             else{
