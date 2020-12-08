@@ -44,4 +44,10 @@ public class ExcelFormatReader {
 
         return "excel file is read";
     }
+
+    @GetMapping("/excelReader2")
+    public String nextLevelOfReadingExcel(){
+
+        return "Excel is read";
+    }
 }
