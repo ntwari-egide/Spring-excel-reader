@@ -37,11 +37,18 @@ public class ExcelFormatReader {
 
         for (Row row : sheet){
             // we start by saying first row column id because It doesn't consider the blank spaces of the sheet
-            System.out.println(row.getCell(1));
-            System.out.println(row.getCell(2));
-            System.out.println(row.getCell(3));
-            System.out.println(row.getCell(4));
-            System.out.println(row.getCell(5));
+            if(i == 0){
+                i++;
+            }
+            else {
+                System.out.println(row.getCell(1));
+                System.out.println(row.getCell(2));
+                System.out.println(row.getCell(3));
+                System.out.println(row.getCell(4));
+                System.out.println(row.getCell(5));
+
+                i++;
+            }
         }
 
         return "excel file is read";
@@ -66,11 +73,7 @@ public class ExcelFormatReader {
             String memberSecondName = row.getCell(3).getStringCellValue();
             String memberMarks = row.getCell(4).getStringCellValue();
             String memberPosition = row.getCell(5).getStringCellValue();
-
-            Integer memberIdInteger = Integer.valueOf(memberId);
-            Integer memberPositionInteger = Integer.valueOf(memberPosition);
-            Integer memberMasksInteger = Integer.valueOf(memberMarks);
-            Member member = new Member(memberIdInteger,memberFirstName,memberSecondName,memberMasksInteger,memberPositionInteger);
+            Member member = new Member(memberId,memberFirstName,memberSecondName,memberMarks,memberPosition);
 
             members.add(member);
         }
