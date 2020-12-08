@@ -67,18 +67,20 @@ public class ExcelFormatReader {
         for (Row row: sheet){
             if(i == 0){
                 i++;
-                break;
             }
-            DataFormatter dataFormatter = new DataFormatter();
-            String memberId = dataFormatter.formatCellValue(row.getCell(1));
-            String memberFirstName = dataFormatter.formatCellValue(row.getCell(2));
-            String memberSecondName =dataFormatter.formatCellValue(row.getCell(3));
-            String memberMarks = dataFormatter.formatCellValue(row.getCell(4));
-            String memberPosition = dataFormatter.formatCellValue(row.getCell(5));
+            else{
+                DataFormatter dataFormatter = new DataFormatter();
+                String memberId = dataFormatter.formatCellValue(row.getCell(1));
+                String memberFirstName = dataFormatter.formatCellValue(row.getCell(2));
+                String memberSecondName =dataFormatter.formatCellValue(row.getCell(3));
+                String memberMarks = dataFormatter.formatCellValue(row.getCell(4));
+                String memberPosition = dataFormatter.formatCellValue(row.getCell(5));
 
-            Member member = new Member(memberId,memberFirstName,memberSecondName,memberMarks,memberPosition);
+                Member member = new Member(memberId,memberFirstName,memberSecondName,memberMarks,memberPosition);
 
-            members.add(member);
+                members.add(member);
+                i++;
+            }
         }
 
         return members;
