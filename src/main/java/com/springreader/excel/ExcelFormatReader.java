@@ -34,7 +34,11 @@ public class ExcelFormatReader {
         int i = 0;
 
         for (Row row : sheet){
+            System.out.println(row.getCell(1));
+            System.out.println(row.getCell(2));
+            System.out.println(row.getCell(3));
             System.out.println(row.getCell(4));
+            System.out.println(row.getCell(5));
         }
 
         return "excel file is read";
