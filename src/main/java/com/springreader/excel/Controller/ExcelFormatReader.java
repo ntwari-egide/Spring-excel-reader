@@ -1,6 +1,8 @@
 package com.springreader.excel.Controller;
 
+import com.springreader.excel.Model.Member;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -46,8 +48,30 @@ public class ExcelFormatReader {
     }
 
     @GetMapping("/excelReader2")
-    public String nextLevelOfReadingExcel(){
+    public List<Member> nextLevelOfReadingExcel()throws Exception{
+        File file = new File("C:\\Users\\user\\Documents\\ntwari egide documents\\spring boot\\Spring-excel-reader\\src\\main\\resources\\members.xlsx");
+        FileInputStream fileInputStream = new FileInputStream(file);
 
-        return "Excel is read";
+        Workbook workbook = new XSSFWorkbook(fileInputStream);
+        Sheet sheet = workbook.getSheetAt(0);
+
+//        Map<Integer,List<String>> dataFound = new HashMap<>();
+        List<Member> members = new ArrayList<>();
+
+        int i=0;
+
+        for (Row row: sheet){
+            Double memberId = row.getCell(1).getNumericCellValue();
+            String memberFirstName = row.getCell(2).getStringCellValue();
+            String memberSecondName = row.getCell(3).getStringCellValue();
+            Double memberMarks = row.getCell(4).getNumericCellValue();
+            Double memberPosition = row.getCell(5).getNumericCellValue();
+
+            Member member = new Member(memberId,memberFirstName,memberSecondName,memberMarks,memberPosition);
+
+            members.add(member);
+        }
+
+        return members;
     }
 }
