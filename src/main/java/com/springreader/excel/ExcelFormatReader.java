@@ -4,6 +4,7 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -24,7 +25,7 @@ public class ExcelFormatReader {
 
         File file = new File("C:\\Users\\user\\Documents\\ntwari egide documents\\spring boot\\Spring-excel-reader\\src\\main\\resources\\members.xlsx");
         FileInputStream fileInputStream = new FileInputStream(file);
-        Workbook workbook = new HSSFWorkbook(fileInputStream);
+        Workbook workbook = new XSSFWorkbook(fileInputStream);
 
         Sheet sheet = workbook.getSheetAt(0);
 
@@ -33,7 +34,7 @@ public class ExcelFormatReader {
         int i = 0;
 
         for (Row row : sheet){
-            System.out.println(row.getCell(0));
+            System.out.println(row.getCell(4));
         }
 
         return "excel file is read";
