@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -31,8 +32,8 @@ public class ExcelFormatReader {
         Map<Integer , List<String>> data = new HashMap<>();
         int i = 0;
 
-        for (Row row : cheet){
-
+        for (Row row : sheet){
+            System.out.println(row.getCell(0));
         }
 
         return "excel file is read";
