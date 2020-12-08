@@ -107,7 +107,7 @@ public class ExcelFormatReader {
         Font headerFont = workbook.createFont();
         headerFont.setBold(true);
         headerFont.setFontHeightInPoints((short) 14);
-        headerFont.setColor(IndexedColors.RED.getIndex());
+        headerFont.setColor(IndexedColors.SEA_GREEN.getIndex());
 
         // Create a CellStyle with the font
         CellStyle headerCellStyle = workbook.createCellStyle();
@@ -117,7 +117,7 @@ public class ExcelFormatReader {
         Row headerRow = sheet.createRow(0);
 
         // Create cells
-        for(int i = 0; i < columns.length; i++) {
+        for(int i = 1; i <= columns.length; i++) {
             Cell cell = headerRow.createCell(i);
             cell.setCellValue(columns[i]);
             cell.setCellStyle(headerCellStyle);
