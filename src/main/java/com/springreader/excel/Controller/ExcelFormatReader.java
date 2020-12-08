@@ -61,13 +61,16 @@ public class ExcelFormatReader {
         int i=0;
 
         for (Row row: sheet){
-            Double memberId = row.getCell(1).getNumericCellValue();
+            String memberId = row.getCell(1).getStringCellValue();
             String memberFirstName = row.getCell(2).getStringCellValue();
             String memberSecondName = row.getCell(3).getStringCellValue();
-            Double memberMarks = row.getCell(4).getNumericCellValue();
-            Double memberPosition = row.getCell(5).getNumericCellValue();
+            String memberMarks = row.getCell(4).getStringCellValue();
+            String memberPosition = row.getCell(5).getStringCellValue();
 
-            Member member = new Member(memberId,memberFirstName,memberSecondName,memberMarks,memberPosition);
+            Integer memberIdInteger = Integer.valueOf(memberId);
+            Integer memberPositionInteger = Integer.valueOf(memberPosition);
+            Integer memberMasksInteger = Integer.valueOf(memberMarks);
+            Member member = new Member(memberIdInteger,memberFirstName,memberSecondName,memberMasksInteger,memberPositionInteger);
 
             members.add(member);
         }
