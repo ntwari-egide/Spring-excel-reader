@@ -2,10 +2,7 @@ package com.springreader.excel.Controller;
 
 import com.springreader.excel.Model.Member;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -68,11 +65,17 @@ public class ExcelFormatReader {
         int i=0;
 
         for (Row row: sheet){
-            String memberId = row.getCell(1).getStringCellValue();
-            String memberFirstName = row.getCell(2).getStringCellValue();
-            String memberSecondName = row.getCell(3).getStringCellValue();
-            String memberMarks = row.getCell(4).getStringCellValue();
-            String memberPosition = row.getCell(5).getStringCellValue();
+            if(i == 0){
+                i++;
+                break;
+            }
+            DataFormatter dataFormatter = new DataFormatter();
+            String memberId = dataFormatter.formatCellValue(row.getCell(1));
+            String memberFirstName = dataFormatter.formatCellValue(row.getCell(2));
+            String memberSecondName =dataFormatter.formatCellValue(row.getCell(3));
+            String memberMarks = dataFormatter.formatCellValue(row.getCell(4));
+            String memberPosition = dataFormatter.formatCellValue(row.getCell(5));
+
             Member member = new Member(memberId,memberFirstName,memberSecondName,memberMarks,memberPosition);
 
             members.add(member);
