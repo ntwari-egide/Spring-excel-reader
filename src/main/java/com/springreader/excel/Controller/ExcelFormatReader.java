@@ -90,6 +90,7 @@ public class ExcelFormatReader {
 
     @PostMapping("/createExcel")
     public ResponseEntity<?> createExcelFile(@RequestBody List<Member> members)throws Exception{
+        System.out.println(members);
         String[] columns = {"member no", "first name", "second name", "marks","position"};
 
         // Create a Workbook
